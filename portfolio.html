@@ -1,133 +1,1026 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio - Portfolio Tino</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tino Guillet — Portfolio &amp; CV</title>
+<meta name="description" content="Portfolio de Tino Guillet, étudiant en BTS SIO — CV et contact.">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+============================================================ */
+:root{
+  --bg:#0e1420;
+  --bg-alt:#111826;
+  --surface:#161f30;
+  --surface-2:#1c273b;
+  --border:#293448;
+  --border-soft:#20293c;
+  --text:#e9e7e0;
+  --text-dim:#98a2ba;
+  --text-faint:#6b7690;
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  --amber:#f2a65a;
+  --cyan:#5ec8d8;
+  --violet:#c792ea;
+  --mint:#7fd9a6;
+  --rose:#ea8080;
+  --sky:#7ea8f2;
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  --accent:#f2a65a;
+  --accent-ink:#241705;
 
-  <!-- =======================================================
-  * Template Name: Kelly
-  * Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  --font-sans:'Inter', system-ui, sans-serif;
+
+  --radius-s:3px;
+  --radius-m:8px;
+  --container:1120px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4{margin:0;font-family:var(--font-mono);font-weight:700;letter-spacing:-0.01em;}
+p{margin:0;}
+button{font:inherit;cursor:pointer;}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 28px;}
+.section{padding:112px 0;position:relative;}
+.section-head{max-width:640px;margin-bottom:56px;}
+.section-head .kicker{
+  font-family:var(--font-mono);
+  color:var(--accent);
+  font-size:0.85rem;
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-head .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--text);}
+.section-head p{color:var(--text-dim);margin-top:14px;font-size:1.02rem;max-width:540px;}
+
+::selection{background:var(--accent);color:var(--accent-ink);}
+
+/* reveal-on-scroll (single subtle treatment, used sparingly) */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  *{scroll-behavior:auto !important;}
+}
+
+/* ============================================================
+   HEADER / NAV
+============================================================ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 0;
+  transition:background .35s ease, padding .35s ease, border-color .35s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header.scrolled{
+  background:rgba(14,20,32,0.86);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  padding:14px 0;
+  border-color:var(--border-soft);
+}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--font-mono);font-weight:700;font-size:1.05rem;color:var(--text);}
+.brand .caret{color:var(--accent);}
+.brand .blink{display:inline-block;width:8px;height:1.1em;background:var(--accent);margin-left:2px;animation:blink 1.1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+.navmenu ul{display:flex;gap:6px;align-items:center;}
+.navmenu a{
+  font-family:var(--font-mono);
+  font-size:0.88rem;
+  color:var(--text-dim);
+  padding:9px 14px;
+  border-radius:var(--radius-s);
+  position:relative;
+  transition:color .25s ease;
+}
+.navmenu a:hover{color:var(--text);}
+.navmenu a.active{color:var(--accent);}
+.navmenu a.active::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:3px;height:1px;background:var(--accent);
+}
+.nav-cta{
+  font-family:var(--font-mono);font-size:0.85rem;
+  border:1px solid var(--border);
+  padding:9px 16px;border-radius:var(--radius-s);
+  color:var(--text);transition:border-color .25s ease, color .25s ease, background .25s ease;
+}
+.nav-cta:hover{border-color:var(--accent);color:var(--accent);}
+
+.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:var(--radius-s);color:var(--text);width:40px;height:40px;align-items:center;justify-content:center;font-size:1.1rem;}
+
+@media (max-width:900px){
+  .navmenu{
+    position:fixed;inset:64px 16px auto 16px;
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-m);
+    padding:10px;
+    display:none;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+  }
+  .navmenu.open{display:block;}
+  .navmenu ul{flex-direction:column;align-items:stretch;gap:2px;}
+  .navmenu a{padding:12px 14px;}
+  .nav-cta{display:none;}
+  .nav-toggle{display:flex;}
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero{
+  min-height:100svh;
+  display:flex;align-items:center;
+  padding-top:140px;padding-bottom:80px;
+  background:
+    radial-gradient(700px 420px at 82% 8%, rgba(242,166,90,0.10), transparent 60%),
+    radial-gradient(600px 380px at 8% 80%, rgba(94,200,216,0.08), transparent 60%),
+    var(--bg);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:radial-gradient(700px 500px at 30% 20%, black, transparent 75%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;}
+.terminal-line{
+  font-family:var(--font-mono);color:var(--text-faint);font-size:0.92rem;margin-bottom:22px;
+  display:flex;gap:8px;
+}
+.terminal-line .prompt{color:var(--mint);}
+.terminal-line .path{color:var(--cyan);}
+.terminal-line .cmd{color:var(--text-dim);}
+.hero h1{
+  font-size:clamp(2.6rem,6vw,4.6rem);
+  line-height:1.04;
+  color:var(--text);
+  max-width:14ch;
+}
+.hero .role-line{
+  margin-top:20px;
+  font-family:var(--font-mono);
+  font-size:clamp(1.05rem,2vw,1.3rem);
+  color:var(--accent);
+  min-height:1.6em;
+}
+.hero .role-line .cursor{display:inline-block;width:9px;height:1em;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(1) infinite;margin-left:2px;}
+.hero p.lede{
+  margin-top:24px;max-width:52ch;color:var(--text-dim);font-size:1.06rem;
+}
+.hero .cta-row{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+.btn{
+  font-family:var(--font-mono);font-size:0.92rem;
+  padding:13px 22px;border-radius:var(--radius-s);
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid transparent;
+  transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn-primary{background:var(--accent);color:var(--accent-ink);font-weight:600;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-ghost{border-color:var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+.hero-stats{
+  margin-top:64px;
+  display:grid;grid-template-columns:repeat(3,auto);gap:44px;
+}
+.hero-stats .stat b{
+  display:block;font-family:var(--font-mono);font-size:2rem;color:var(--text);
+}
+.hero-stats .stat span{font-size:0.86rem;color:var(--text-faint);}
+@media (max-width:640px){.hero-stats{grid-template-columns:repeat(2,auto);}}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:64px;align-items:start;}
+.about-text p{color:var(--text-dim);font-size:1.04rem;}
+.about-text p + p{margin-top:16px;}
+.about-text .highlight{color:var(--text);}
+
+.info-panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-m);
+  overflow:hidden;
+}
+.info-panel .panel-head{
+  padding:12px 18px;border-bottom:1px solid var(--border);
+  font-family:var(--font-mono);font-size:0.8rem;color:var(--text-faint);
+  display:flex;align-items:center;gap:8px;
+}
+.info-panel .panel-head .dots{display:flex;gap:5px;}
+.info-panel .panel-head .dots span{width:8px;height:8px;border-radius:50%;background:var(--border);}
+.info-list{padding:6px 4px;}
+.info-list li{
+  padding:13px 18px;font-family:var(--font-mono);font-size:0.92rem;
+  display:flex;gap:10px;color:var(--text-dim);border-bottom:1px solid var(--border-soft);
+}
+.info-list li:last-child{border-bottom:none;}
+.info-list .k{color:var(--cyan);}
+.info-list .v{color:var(--text);word-break:break-word;}
+
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   CV
+============================================================ */
+.cv-shell{
+  display:grid;grid-template-columns:280px 1fr;
+  border:1px solid var(--border);border-radius:var(--radius-m);
+  overflow:hidden;background:var(--surface);
+}
+.cv-side{
+  background:var(--surface-2);
+  padding:36px 28px;
+  border-right:1px solid var(--border);
+}
+.cv-side .who{margin-bottom:30px;}
+.cv-side .who h3{font-size:1.35rem;color:var(--text);}
+.cv-side .who span{display:block;margin-top:6px;font-family:var(--font-sans);font-size:0.92rem;color:var(--text-dim);}
+.cv-block{margin-bottom:28px;}
+.cv-block h4{
+  font-size:0.76rem;color:var(--accent);
+  margin-bottom:12px;letter-spacing:.02em;
+  font-family:var(--font-mono);font-weight:600;
+}
+.cv-block li{
+  font-size:0.92rem;color:var(--text-dim);padding:5px 0;
+  display:flex;gap:8px;align-items:baseline;
+}
+.cv-block li::before{content:"·";color:var(--accent);}
+.cv-main{padding:40px 44px;}
+.cv-main h2{font-size:1.6rem;color:var(--text);margin-bottom:14px;}
+.cv-main .profile-text{color:var(--text-dim);font-size:1rem;max-width:64ch;}
+.cv-main .cv-sub{margin-top:38px;}
+.cv-main .cv-sub h4{
+  font-family:var(--font-mono);font-size:0.95rem;color:var(--text);
+  border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px;
+}
+.tag-row{display:flex;flex-wrap:wrap;gap:9px;}
+.tag{
+  font-family:var(--font-mono);font-size:0.82rem;
+  padding:7px 13px;border-radius:20px;
+  border:1px solid var(--border);color:var(--text-dim);
+  transition:border-color .2s ease, color .2s ease;
+}
+.tag:hover{border-color:var(--accent);color:var(--accent);}
+
+.timeline{position:relative;padding-left:26px;}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border);}
+.timeline-item{position:relative;padding-bottom:22px;}
+.timeline-item:last-child{padding-bottom:0;}
+.timeline-item::before{
+  content:"";position:absolute;left:-26px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.timeline-item b{color:var(--text);font-size:0.98rem;}
+.timeline-item .meta{display:block;font-family:var(--font-mono);font-size:0.82rem;color:var(--text-faint);margin-top:3px;}
+.timeline-item .desc{display:block;color:var(--text-dim);font-size:0.9rem;margin-top:5px;}
+
+.interest-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.interest-chip{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 14px;border:1px solid var(--border);border-radius:var(--radius-s);
+  font-size:0.88rem;color:var(--text-dim);
+}
+.interest-chip i{color:var(--accent);}
+
+.cv-print-btn{
+  margin-top:36px;
+  background:none;border:1px dashed var(--border);color:var(--text-dim);
+  padding:11px 18px;border-radius:var(--radius-s);font-family:var(--font-mono);font-size:0.85rem;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:border-color .2s ease,color .2s ease;
+}
+.cv-print-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+@media (max-width:860px){
+  .cv-shell{grid-template-columns:1fr;}
+  .cv-side{border-right:none;border-bottom:1px solid var(--border);}
+  .cv-main{padding:32px 26px;}
+}
+
+/* ============================================================
+   STAGE / TABLE
+============================================================ */
+.stage-meta{
+  display:flex;flex-wrap:wrap;gap:28px;
+  font-family:var(--font-mono);font-size:0.86rem;color:var(--text-dim);
+  margin-bottom:8px;
+}
+.stage-meta span b{color:var(--text);}
+
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:34px 0 26px;}
+.chip{
+  font-family:var(--font-mono);font-size:0.82rem;
+  padding:8px 14px;border-radius:20px;
+  border:1px solid var(--border);color:var(--text-dim);
+  display:inline-flex;align-items:center;gap:7px;
+  background:none;
+  transition:all .2s ease;
+}
+.chip .swatch{width:8px;height:8px;border-radius:50%;background:var(--dot,var(--text-faint));}
+.chip.active,.chip:hover{border-color:var(--dot,var(--accent));color:var(--text);}
+.chip.active{background:color-mix(in srgb, var(--dot,var(--accent)) 14%, transparent);}
+
+.stage-table-wrap{
+  border:1px solid var(--border);border-radius:var(--radius-m);overflow:hidden;background:var(--surface);
+}
+table.stage-table{width:100%;border-collapse:collapse;}
+.stage-table thead th{
+  text-align:left;font-family:var(--font-mono);font-weight:600;font-size:0.78rem;
+  color:var(--text-faint);padding:14px 20px;border-bottom:1px solid var(--border);
+  background:var(--surface-2);
+}
+.stage-table tbody tr.row-main{
+  cursor:pointer;border-bottom:1px solid var(--border-soft);transition:background .2s ease;
+}
+.stage-table tbody tr.row-main:hover{background:var(--surface-2);}
+.stage-table tbody tr.row-main.open{background:var(--surface-2);}
+.stage-table td{padding:16px 20px;vertical-align:top;font-size:0.94rem;}
+.cell-week{font-family:var(--font-mono);color:var(--text);white-space:nowrap;display:flex;align-items:center;gap:10px;}
+.cell-week .num{
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:0.78rem;color:var(--accent);flex-shrink:0;
+}
+.cell-summary{color:var(--text-dim);max-width:420px;}
+.cell-badges{display:flex;flex-wrap:wrap;gap:6px;}
+.badge{
+  font-family:var(--font-mono);font-size:0.72rem;padding:4px 9px;border-radius:20px;
+  background:color-mix(in srgb, var(--dot) 16%, transparent);
+  color:var(--dot);white-space:nowrap;
+}
+.cell-toggle{width:34px;text-align:right;}
+.cell-toggle i{color:var(--text-faint);transition:transform .25s ease;}
+tr.open .cell-toggle i{transform:rotate(180deg);color:var(--accent);}
+
+tr.row-detail{display:none;}
+tr.row-detail.show{display:table-row;}
+tr.row-detail td{
+  padding:0;border-bottom:1px solid var(--border-soft);background:var(--bg-alt);
+}
+.detail-inner{
+  padding:26px 24px 30px 60px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px 32px;
+}
+.detail-block h5{
+  font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);margin-bottom:8px;
+  display:flex;align-items:center;gap:7px;
+}
+.detail-block p{color:var(--text-dim);font-size:0.92rem;}
+.detail-block ul{margin-top:4px;}
+.detail-block ul li{
+  color:var(--text-dim);font-size:0.9rem;padding:5px 0 5px 16px;position:relative;
+}
+.detail-block ul li::before{content:"—";position:absolute;left:0;color:var(--text-faint);}
+.detail-block ul li b{color:var(--text);font-weight:600;}
+@media (max-width:760px){
+  .detail-inner{grid-template-columns:1fr;padding-left:24px;}
+  .stage-table thead{display:none;}
+  .cell-summary{display:none;}
+  .stage-table td{padding:14px;}
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;}
+.contact-cards{display:flex;flex-direction:column;gap:14px;}
+.contact-card{
+  border:1px solid var(--border);border-radius:var(--radius-m);padding:20px 22px;
+  display:flex;gap:16px;align-items:flex-start;background:var(--surface);
+}
+.contact-card i{font-size:1.1rem;color:var(--accent);margin-top:3px;}
+.contact-card h4{font-family:var(--font-sans);font-size:0.98rem;color:var(--text);margin-bottom:3px;}
+.contact-card p{color:var(--text-dim);font-size:0.92rem;}
+
+.form-card{border:1px solid var(--border);border-radius:var(--radius-m);padding:34px;background:var(--surface);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.field{display:flex;flex-direction:column;gap:8px;}
+.field.full{grid-column:1/-1;}
+.field label{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-faint);}
+.field input,.field textarea{
+  background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-s);
+  padding:12px 14px;color:var(--text);font-family:var(--font-sans);font-size:0.95rem;
+  transition:border-color .2s ease;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:120px;}
+.form-foot{display:flex;align-items:center;gap:16px;margin-top:8px;}
+.form-msg{font-family:var(--font-mono);font-size:0.85rem;color:var(--mint);opacity:0;transition:opacity .3s ease;}
+.form-msg.show{opacity:1;}
+
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+
+/* ============================================================
+   FOOTER / MISC
+============================================================ */
+footer{
+  border-top:1px solid var(--border-soft);padding:36px 0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+footer .copy{font-family:var(--font-mono);font-size:0.82rem;color:var(--text-faint);}
+.social-links{display:flex;gap:10px;}
+.social-links a{
+  width:36px;height:36px;border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--text-dim);
+  transition:border-color .2s ease,color .2s ease;
+}
+.social-links a:hover{border-color:var(--accent);color:var(--accent);}
+
+.scroll-top{
+  position:fixed;right:24px;bottom:24px;width:46px;height:46px;border-radius:50%;
+  background:var(--accent);color:var(--accent-ink);border:none;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+  opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .3s ease, transform .3s ease;z-index:90;
+}
+.scroll-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+@media print{
+  header,.hero,#apropos,#stage,#contact,footer,.scroll-top{display:none !important;}
+  #cv{padding:0 !important;}
+  body{background:#fff;color:#111;}
+  .cv-shell{border-color:#ccc;}
+}
+</style>
 </head>
+<body>
 
-<body class="portfolio-page">
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="#accueil" class="brand"><span class="caret">&gt;</span>tino<span class="blink"></span></a>
+    <nav class="navmenu" id="navMenu">
+      <ul>
+        <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+        <li><a href="#apropos" class="nav-link">À propos</a></li>
+        <li><a href="#cv" class="nav-link">CV</a></li>
+        <li><a href="#stage" class="nav-link">Stage SIO1</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Me contacter</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu"><i class="bi bi-list"></i></button>
+  </div>
+</header>
 
-  <header id="header" class="header d-flex align-items-center light-background sticky-top">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+<main>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Tino</h1>
-      </a>
+  <!-- HERO -->
+  <section id="accueil" class="hero">
+    <div class="wrap">
+      <div class="terminal-line"><span class="prompt">tino@portfolio</span><span class="path">:~$</span> <span class="cmd">whoami</span></div>
+      <h1>Tino Guillet</h1>
+      <div class="role-line" id="roleLine"></div>
+      <p class="lede">En première année de BTS Services Informatiques aux Organisations au lycée Merleau-Ponty à Rochefort.</p>
+      <div class="cta-row">
+        <a href="#stage" class="btn btn-primary"><i class="bi bi-terminal"></i> Voir mon stage</a>
+        <a href="#cv" class="btn btn-ghost"><i class="bi bi-file-earmark-person"></i> Consulter le CV</a>
+      </div>
+    </div>
+  </section>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="about.html">A propos</a></li>
-          <li><a href="portfolio.html" class="active">Portfolio</a></li>
-          <li><a href="cv.html">CV</a></li>
-          <li class="dropdown"><a href="#"><span>Stages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+  <!-- ABOUT -->
+  <section id="apropos" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot"></span>01 — À propos</div>
+        <h2>Qui suis-je ?</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Actuellement en première année de <span class="highlight">BTS Services Informatiques aux Organisations (SIO)</span> au lycée Merleau-Ponty à Rochefort, j'ai terminé un stage de 6 semaines pour compléter ma première année scolaire, du <span class="highlight">4 mai au 12 juin</span>.</p>
+        </div>
+        <div class="info-panel reveal">
+          <div class="panel-head"><div class="dots"><span></span><span></span><span></span></div>profil.json</div>
+          <ul class="info-list">
+            <li><span class="k">"email"</span><span class="v">: "tino17@orange.fr"</span></li>
+            <li><span class="k">"telephone"</span><span class="v">: "+33 6 79 80 12 89"</span></li>
+            <li><span class="k">"ville"</span><span class="v">: "La Rochelle, France"</span></li>
+            <li><span class="k">"anniversaire"</span><span class="v">: "1 septembre 2005"</span></li>
+            <li><span class="k">"formation"</span><span class="v">: "BTS SIO — Rochefort"</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot"></span>02 — Parcours</div>
+        <h2>Curriculum Vitae</h2>
+        <p>Formation, compétences techniques et centres d'intérêt.</p>
+      </div>
+
+      <div class="cv-shell reveal">
+        <aside class="cv-side">
+          <div class="who">
+            <h3>Tino Guillet</h3>
+            <span>Étudiant en informatique</span>
+          </div>
+
+          <div class="cv-block">
+            <h4>Contact</h4>
             <ul>
-              <li><a href="stagesio1.html">Stage SIO1</a></li>
-              <li><a href="#">Stage SIO2</a></li>
+              <li>tino17@orange.fr</li>
+              <li>06 79 80 12 89</li>
             </ul>
-          </li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+          </div>
 
-      <div class="header-social-links">
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <div class="cv-block">
+            <h4>Atouts</h4>
+            <ul>
+              <li>Motivé</li>
+              <li>Collaboratif</li>
+              <li>Curieux</li>
+              <li>Rigoureux</li>
+              <li>Sérieux</li>
+            </ul>
+          </div>
+
+          <div class="cv-block">
+            <h4>Logiciels</h4>
+            <ul>
+              <li>Git &amp; GitHub</li>
+              <li>Miro</li>
+              <li>VirtualBox</li>
+            </ul>
+          </div>
+
+          <div class="cv-block">
+            <h4>Langues</h4>
+            <ul>
+              <li>Français</li>
+              <li>Anglais — C1</li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="cv-main">
+          <h2>Profil professionnel</h2>
+          <p class="profile-text">Étudiant en première année de BTS Services Informatiques aux Organisations. Motivé et curieux, je développe des compétences en programmation et en informatique appliquée. Sérieux et rigoureux, je souhaite mettre en pratique mes connaissances au sein d'un environnement professionnel tout en continuant à apprendre.</p>
+
+          <div class="cv-sub">
+            <h4>Compétences techniques</h4>
+            <div class="tag-row">
+              <span class="tag">C++</span>
+              <span class="tag">HTML</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS</span>
+              <span class="tag">PHP</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+          <div class="cv-sub">
+            <h4>Formation</h4>
+            <div class="timeline">
+              <div class="timeline-item">
+                <b>BTS Systèmes Informatiques aux Organisations (SIO)</b>
+                <span class="meta">2025 – 2027 · Lycée Merleau-Ponty, Rochefort</span>
+              </div>
+              <div class="timeline-item">
+                <b>L1 Université de droit</b>
+                <span class="meta">2023 – 2025 · La Rochelle</span>
+              </div>
+              <div class="timeline-item">
+                <b>Baccalauréat général</b>
+                <span class="meta">2023 · Spécialités mathématiques et anglais</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-sub">
+            <h4>Centres d'intérêt</h4>
+            <div class="interest-grid">
+              <span class="interest-chip"><i class="bi bi-code-slash"></i>Informatique &amp; programmation</span>
+              <span class="interest-chip"><i class="bi bi-translate"></i>Langue &amp; culture anglaise</span>
+              <span class="interest-chip"><i class="bi bi-controller"></i>Jeux vidéo</span>
+              <span class="interest-chip"><i class="bi bi-music-note-beamed"></i>Musique</span>
+              <span class="interest-chip"><i class="bi bi-person-walking"></i>Course à pied</span>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-  </header>
+  </section>
 
-  <main class="main">
+  <!-- STAGE SIO1 -->
+  <section id="stage" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot"></span>03 — Expérience</div>
+        <h2>Stage SIO1 — 9 Coworking</h2>
+        <p>Stage de 6 semaines chez 9 Coworking, un espace de coworking à La Rochelle, à développer et faire évoluer leur site WordPress. Le 9 Coworking offre un espace de travail aux freelances et indépendants.</div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p></p>
-      </div><!-- End Section Title -->
-
-    </section><!-- /Portfolio Section -->
-
-  </main>
-
-  <footer id="footer" class="footer light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Tino</strong> <span>All Rights Reserved<br></span></p>
+      <div class="stage-meta reveal">
+        <span><i class="bi bi-calendar3"></i> <b>4 mai — 12 juin 2026</b></span>
+        <span><i class="bi bi-geo-alt"></i> <b>9 Coworking, La Rochelle</b></span>
+        <span><i class="bi bi-stack"></i> <b>WordPress · ACF · API REST · JS</b></span>
       </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+
+      <div class="filter-row reveal" id="filterRow">
+        <!-- filled by JS -->
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
+
+      <div class="stage-table-wrap reveal">
+        <table class="stage-table">
+          <thead>
+            <tr>
+              <th style="width:120px;">Semaine</th>
+              <th>Résumé</th>
+              <th style="width:260px;">Compétences mobilisées</th>
+              <th class="cell-toggle"></th>
+            </tr>
+          </thead>
+          <tbody id="stageTableBody">
+            <!-- filled by JS -->
+          </tbody>
+        </table>
       </div>
     </div>
+  </section>
 
-  </footer>
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker"><span class="dot"></span>04 — Contact</div>
+        <h2>Discutons</h2>
+        <p>Une question, une opportunité de stage ou juste envie d'échanger ? Écrivez-moi.</p>
+      </div>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      <div class="contact-grid">
+        <div class="contact-cards reveal">
+          <div class="contact-card">
+            <i class="bi bi-geo-alt"></i>
+            <div><h4>Adresse</h4><p>5 rue du Fief Cluzeau, La Jarne, 17220</p></div>
+          </div>
+          <div class="contact-card">
+            <i class="bi bi-telephone"></i>
+            <div><h4>Téléphone</h4><p>+33 6 79 80 12 89</p></div>
+          </div>
+          <div class="contact-card">
+            <i class="bi bi-envelope"></i>
+            <div><h4>Email</h4><p>tino17@orange.fr</p></div>
+          </div>
+          <div class="contact-card">
+            <i class="bi bi-linkedin"></i>
+            <div><h4>LinkedIn</h4><p>Disponible sur demande</p></div>
+          </div>
+        </div>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        <form class="form-card reveal" id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="name-field">Votre nom</label>
+              <input type="text" id="name-field" required>
+            </div>
+            <div class="field">
+              <label for="email-field">Votre email</label>
+              <input type="email" id="email-field" required>
+            </div>
+          </div>
+          <div class="field full" style="margin-bottom:18px;">
+            <label for="subject-field">Sujet</label>
+            <input type="text" id="subject-field" required>
+          </div>
+          <div class="field full" style="margin-bottom:18px;">
+            <label for="message-field">Message</label>
+            <textarea id="message-field" required></textarea>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Envoyer le message</button>
+            <span class="form-msg" id="formMsg"><i class="bi bi-check-circle"></i> Message envoyé, merci !</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+</main>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+<footer>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;width:100%;">
+    <span class="copy">© 2026 Tino Guillet — Tous droits réservés</span>
+    <div class="social-links">
+      <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Retour en haut"><i class="bi bi-arrow-up"></i></button>
+
+<script>
+/* ============================================================
+   DATA — Stage SIO1
+============================================================ */
+const COMPETENCES = {
+  a:{label:"Présence en ligne", color:"var(--amber)"},
+  b:{label:"Développement pro", color:"var(--cyan)"},
+  c:{label:"Service aux utilisateurs", color:"var(--violet)"},
+  d:{label:"Mode projet", color:"var(--mint)"},
+  e:{label:"Incidents & évolutions", color:"var(--rose)"},
+  f:{label:"Patrimoine informatique", color:"var(--sky)"}
+};
+
+const WEEKS = [
+  {
+    n:1,
+    summary:"Prise en main de WordPress, création du CPT « coworkers » et des champs ACF.",
+    comp:["a","b"],
+    missions:"Prise en main de WordPress, création d'un Custom Post Type « coworkers » et configuration de champs sur mesure via Advanced Custom Fields (ACF).",
+    autonomie:"Initialisation du développement en autonomie de la première version de l'archive et des fiches individuelles du site.",
+    difficultes:"Modélisation complexe des données sur WordPress, résolue par la mise en place d'une structure ACF adaptée pour optimiser l'affichage et la gestion du contenu.",
+    detail:[
+      {c:"a", t:"Prise en main de l'environnement WordPress, création du CPT « coworkers » et des champs sur mesure via ACF pour le site vitrine/annuaire."},
+      {c:"b", t:"Apprentissage rapide du fonctionnement interne du CMS et de l'extension ACF pour structurer les données du projet."}
+    ]
+  },
+  {
+    n:2,
+    summary:"API de synchronisation, refonte de l'archive (grille 5 profils) et premier déploiement en dev.",
+    comp:["c","a","d"],
+    missions:"Développement d'une API de synchronisation de données, refonte ergonomique de l'archive des coworkers (grille à 5 profils), configuration des URL personnalisées et premier déploiement sur la branche de dev.",
+    autonomie:"Modification et structuration autonome des fichiers clés du thème WordPress, ainsi que la gestion du déploiement sur l'environnement de développement.",
+    difficultes:"Blocages sur le flux d'échange de données et les droits d'accès, résolus par un débogage approfondi de l'API et une reconfiguration fine des permissions.",
+    detail:[
+      {c:"c", t:"Développement de l'API de synchronisation pour automatiser l'échange de données entre l'application et le site."},
+      {c:"a", t:"Refonte ergonomique de l'archive (grille à 5 profils), personnalisation des URL et modification des templates du thème."},
+      {c:"d", t:"Gestion du premier déploiement sur la branche de développement."}
+    ]
+  },
+  {
+    n:3,
+    summary:"Filtrage dynamique en JS/AJAX, compteur de coworkers et formulaires asynchrones.",
+    comp:["a","e"],
+    missions:"Intégration UI/UX des fiches et de l'archive, développement d'un système de filtrage dynamique JS (avec mise à jour d'URL sans rechargement), compteur dynamique de coworkers et formulaires asynchrones (contact et avis).",
+    autonomie:"Conception dynamique en JavaScript (manipulation du DOM, gestion de l'historique de navigation/URL) et intégration poussée de fonctionnalités asynchrones.",
+    difficultes:"Rechargements inutiles lors du filtrage, résolus en basculant d'un système de redirection d'URL vers une logique 100% JavaScript/AJAX.",
+    detail:[
+      {c:"a", t:"Intégration UI/UX avancée, filtrage dynamique JS avec mise à jour d'URL sans rechargement, compteur dynamique et formulaires asynchrones."},
+      {c:"e", t:"Identification des ralentissements dus aux rechargements de page et bascule vers une solution 100% JavaScript/AJAX."}
+    ]
+  },
+  {
+    n:4,
+    summary:"Mise en production du site, modularisation des scripts JS et nettoyage du code.",
+    comp:["c","e","f"],
+    missions:"Mise en production du site 9 Coworking (fusion dev vers prod), modularisation des scripts JavaScript (avis-modal.js, contact-modal.js, coworkers-filters.js, milestone-counter.js), nettoyage du code et ajustements CSS.",
+    autonomie:"Conduite autonome de la mise en production, refactorisation complète de l'architecture JavaScript et optimisation des performances front-end.",
+    difficultes:"Interruptions de service (pare-feu, permissions, boucle infinie), résolues par une maintenance technique ciblée et une restructuration propre des scripts.",
+    detail:[
+      {c:"c", t:"Passage de la branche de développement à la branche de production du site 9 Coworking."},
+      {c:"e", t:"Résolution des dysfonctionnements critiques lors de la mise en prod (pare-feu, permissions, boucle infinie)."},
+      {c:"f", t:"Modularisation des scripts JS (avis-modal.js, contact-modal.js) et suppression du fichier obsolète taxonomy-familles-metiers.php."}
+    ]
+  },
+  {
+    n:5,
+    summary:"Passage des fiches en shortcodes et création d'une page modèle administrable.",
+    comp:["f","c"],
+    missions:"Refonte architecturale des fiches individuelles (passage d'un template PHP rigide à des shortcodes), création d'une page modèle universelle administrable sous WordPress, nettoyage et documentation du code.",
+    autonomie:"Transition autonome vers une architecture modulaire basée sur des shortcodes, facilitant la gestion globale du contenu pour les administrateurs.",
+    difficultes:"Rigidité de la maintenance des modèles en PHP, résolue en déportant la logique technique dans des shortcodes dynamiques exploitables dans l'éditeur.",
+    detail:[
+      {c:"f", t:"Refactorisation de l'architecture PHP, nettoyage des fonctions obsolètes et documentation complète des scripts existants."},
+      {c:"c", t:"Migration de la logique technique vers functions.php sous forme de shortcodes pour assouplir l'administration du site."}
+    ]
+  },
+  {
+    n:6,
+    summary:"Conversion finale en shortcodes réutilisables, optimisation CSS et documentation.",
+    comp:["f","c"],
+    missions:"Transformation du template single-coworker.php en shortcodes WordPress réutilisables, création d'un modèle de page dédié, refonte de la mise en page, optimisation du CSS et nettoyage des fichiers obsolètes.",
+    autonomie:"Conversion autonome d'une structure PHP rigide vers un système modulaire flexible, améliorant la maintenabilité et la lisibilité du projet.",
+    difficultes:"Dispersion et rigidité des éléments d'affichage du thème, résolues par une refactorisation complète et la création de shortcodes centralisés.",
+    detail:[
+      {c:"f", t:"Conversion définitive de single-coworker.php en shortcode, suppression des fichiers inutiles, optimisation du CSS et ajout de commentaires."},
+      {c:"c", t:"Création d'un modèle de page universel et administrable, simplifiant l'exploitation du site par les équipes."}
+    ]
+  }
+];
+
+/* ============================================================
+   RENDER — filter chips + table
+============================================================ */
+const filterRow = document.getElementById('filterRow');
+const tableBody = document.getElementById('stageTableBody');
+let activeFilter = 'all';
+
+function chipHTML(key){
+  if(key === 'all'){
+    return `<button class="chip active" data-key="all">Tous les blocs</button>`;
+  }
+  const c = COMPETENCES[key];
+  return `<button class="chip" data-key="${key}" style="--dot:${c.color}"><span class="swatch"></span>${c.label}</button>`;
+}
+
+filterRow.innerHTML = ['all', ...Object.keys(COMPETENCES)].map(chipHTML).join('');
+
+function badgeHTML(key){
+  const c = COMPETENCES[key];
+  return `<span class="badge" style="--dot:${c.color}">${c.label}</span>`;
+}
+
+function detailBlockHTML(title, icon, text){
+  return `<div class="detail-block"><h5><i class="bi ${icon}"></i>${title}</h5><p>${text}</p></div>`;
+}
+
+function renderTable(){
+  tableBody.innerHTML = '';
+  WEEKS.forEach(w => {
+    if(activeFilter !== 'all' && !w.comp.includes(activeFilter)) return;
+
+    const rowMain = document.createElement('tr');
+    rowMain.className = 'row-main';
+    rowMain.dataset.week = w.n;
+    rowMain.innerHTML = `
+      <td><div class="cell-week"><span class="num">${w.n}</span>Semaine ${w.n}</div></td>
+      <td class="cell-summary">${w.summary}</td>
+      <td><div class="cell-badges">${w.comp.map(badgeHTML).join('')}</div></td>
+      <td class="cell-toggle"><i class="bi bi-chevron-down"></i></td>
+    `;
+
+    const rowDetail = document.createElement('tr');
+    rowDetail.className = 'row-detail';
+    const compList = w.detail.map(d => `<li><b>${COMPETENCES[d.c].label} —</b> ${d.t}</li>`).join('');
+    rowDetail.innerHTML = `
+      <td colspan="4">
+        <div class="detail-inner">
+          ${detailBlockHTML('Missions réalisées','bi-check2-circle', w.missions)}
+          ${detailBlockHTML('Autonomie acquise','bi-graph-up-arrow', w.autonomie)}
+          ${detailBlockHTML('Difficultés & solutions','bi-tools', w.difficultes)}
+          <div class="detail-block"><h5><i class="bi bi-mortarboard"></i>Compétences acquises</h5><ul>${compList}</ul></div>
+        </div>
+      </td>
+    `;
+
+    rowMain.addEventListener('click', () => {
+      const isOpen = rowMain.classList.contains('open');
+      document.querySelectorAll('.row-main.open').forEach(r => {
+        r.classList.remove('open');
+        r.nextElementSibling.classList.remove('show');
+      });
+      if(!isOpen){
+        rowMain.classList.add('open');
+        rowDetail.classList.add('show');
+      }
+    });
+
+    tableBody.appendChild(rowMain);
+    tableBody.appendChild(rowDetail);
+  });
+}
+renderTable();
+
+filterRow.addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  activeFilter = btn.dataset.key;
+  filterRow.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+});
+
+/* ============================================================
+   NAV — scroll header state, mobile toggle, scrollspy
+============================================================ */
+const header = document.getElementById('siteHeader');
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+  scrollTopBtn.classList.toggle('show', window.scrollY > 600);
+}, {passive:true});
+
+navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = [...document.querySelectorAll('main section')];
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+}, {rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s => spy.observe(s));
+
+/* ============================================================
+   REVEAL ON SCROLL
+============================================================ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   HERO TYPING EFFECT
+============================================================ */
+const roles = ["Étudiant en BTS SIO", "Développeur"];
+const roleEl = document.getElementById('roleLine');
+let roleIndex = 0, charIndex = 0, deleting = false;
+
+function typeRole(){
+  const current = roles[roleIndex];
+  if(!deleting){
+    charIndex++;
+    roleEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor"></span>';
+    if(charIndex === current.length){ deleting = true; setTimeout(typeRole, 1600); return; }
+  } else {
+    charIndex--;
+    roleEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor"></span>';
+    if(charIndex === 0){ deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+  }
+  setTimeout(typeRole, deleting ? 35 : 65);
+}
+typeRole();
+
+/* ============================================================
+   COUNTERS
+============================================================ */
+const counters = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      let cur = 0;
+      const step = Math.max(1, Math.round(target / 30));
+      const tick = () => {
+        cur = Math.min(target, cur + step);
+        el.textContent = cur;
+        if(cur < target) requestAnimationFrame(tick);
+      };
+      tick();
+      countObserver.unobserve(el);
+    }
+  });
+}, {threshold:0.5});
+counters.forEach(c => countObserver.observe(c));
+
+/* ============================================================
+   CONTACT FORM (front-end only)
+============================================================ */
+const contactForm = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+  formMsg.classList.add('show');
+  contactForm.reset();
+  setTimeout(() => formMsg.classList.remove('show'), 4000);
+});
+
+/* ============================================================
+   PRINT CV
+============================================================ */
+document.getElementById('printCv').addEventListener('click', () => window.print());
+</script>
 
 </body>
-
 </html>
