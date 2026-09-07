@@ -813,6 +813,69 @@
       margin: 38px 0 12px;
     }
 
+    .project-link {
+      margin: 32px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 22px 26px;
+      background: var(--surface);
+      transition: border-color .2s ease, transform .2s ease;
+    }
+
+    .project-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-link .pl-text {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .project-link .pl-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .project-link .pl-title {
+      font-family: var(--font-mono);
+      font-size: 0.98rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .project-link .pl-url {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      word-break: break-all;
+    }
+
+    .project-link .pl-cta {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
     .matrix-title {
       font-family: var(--font-mono);
       font-size: 0.95rem;
@@ -1537,6 +1600,17 @@
           </table>
         </div>
 
+        <a class="project-link reveal" href="https://9coworking.fr/la-rochelle-coworking/coworkers/" target="_blank" rel="noopener noreferrer">
+          <div class="pl-text">
+            <div class="pl-icon"><i class="bi bi-box-arrow-up-right"></i></div>
+            <div>
+              <span class="pl-title">Voir le projet final en ligne</span>
+              <span class="pl-url">9coworking.fr/la-rochelle-coworking/coworkers</span>
+            </div>
+          </div>
+          <span class="pl-cta">Consulter le site <i class="bi bi-arrow-right"></i></span>
+        </a>
+
         <div class="matrix-block reveal">
           <h3 class="matrix-title"><i class="bi bi-grid-3x3"></i> Tableau de synthèse des compétences</h3>
           <div class="matrix-wrap">
@@ -1660,10 +1734,10 @@
     const MATRIX_ORDER = ["f", "e", "a", "d", "c", "b"];
     const REALISATIONS = [
       { text: "Développement et mise en place d'une API de synchronisation entre la base de données et le site internet.", comp: ["c"] },
-      { text: "Création de pages métiers avec pour but d'augmenter leur score de qualité Google .", comp: ["a"] },
+      { text: "Création de pages métiers avec pour but d'augmenter leur score de qualité Google (utilisation de mots-clés, de liens entre les différentes pages du site, …).", comp: ["a"] },
       { text: "Création d'un site vitrine dynamique en JavaScript pour le 9 Coworking, avec URL personnalisée.", comp: ["a"] },
       { text: "Collaboration avec deux autres stagiaires, chacun sur des tâches différentes, en suivant une méthode et des activités données par notre maître de stage.", comp: ["d"] },
-      { text: "Identification et résolution de divers bugs et incidents techniques rencontrés durant le stage .", comp: ["e"] }
+      { text: "Identification et résolution de divers bugs et incidents techniques rencontrés durant le stage (blocages sur le flux de synchronisation des données, dysfonctionnements critiques lors de la mise en production, ralentissements liés aux rechargements de page, problèmes de permissions et de pare-feu).", comp: ["e"] }
     ];
 
     const WEEKS = [
@@ -1689,7 +1763,7 @@
         detail: [
           { c: "c", t: "Développement de l'API de synchronisation pour automatiser l'échange de données entre l'application et le site." },
           { c: "a", t: "Refonte ergonomique de l'archive (grille à 5 profils), personnalisation des URL et modification des templates du thème." },
-          { c: "d", t: "Collaboration avec deux autres stagiaires sur des tâches différentes et suivi d'une méthode donnée par notre maître de stage." }
+          { c: "d", t: "Gestion du premier déploiement sur la branche de développement." }
         ]
       },
       {
@@ -1904,7 +1978,7 @@
     /* ============================================================
        HERO TYPING EFFECT
     ============================================================ */
-    const roles = ["Élève en BTS SIO", "Développeur junior"];
+    const roles = ["Étudiant en BTS SIO", "Développeur juniors"];
     const roleEl = document.getElementById('roleLine');
     let roleIndex = 0, charIndex = 0, deleting = false;
 
@@ -1947,7 +2021,7 @@
     counters.forEach(c => countObserver.observe(c));
 
     /* ============================================================
-       FORMULAIRE DE CONTACT (front-end only)
+       CONTACT FORM (front-end only)
     ============================================================ */
     const contactForm = document.getElementById('contactForm');
     const formMsg = document.getElementById('formMsg');
